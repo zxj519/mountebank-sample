@@ -1,0 +1,36 @@
+{
+  "port": 4546,
+  "protocol": "http",
+  "name": "Default response sample",
+  "defaultResponse": {
+    "statusCode": 400,
+    "body": "Bad Request",
+    "headers": {}
+  },
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "content-type": "application/json;charset=UTF-8"
+            },
+            "body": "{\"ec\": 0,\"em\":\"添加成功\",\"dto\": {\"returnFlag\":\"0\"}}"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "equals": {
+            "path": "/customers",
+            "method": "POST",
+            "body": {
+              "id": "321"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

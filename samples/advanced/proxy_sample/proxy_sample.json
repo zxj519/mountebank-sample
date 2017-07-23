@@ -1,0 +1,26 @@
+{
+    "name": "Proxy sample",
+    "port": 4546,
+    "protocol": "http",
+    "stubs": [
+        {
+            "responses": [
+                {
+                    "proxy": {
+                        "mode": "proxyOnce",
+                        "predicateGenerators": [
+                            {
+                                "matches": {
+                                    "method": true,
+                                    "path": true,
+                                    "query": true
+                                }
+                            }
+                        ],
+                        "to": "http://localhost:4545"
+                    }
+                }
+            ]
+        }
+    ]
+}

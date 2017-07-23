@@ -1,0 +1,40 @@
+{
+  "port": 4546,
+  "protocol": "http",
+  "name": "Post sample",
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "content-type": "application/json;charset=UTF-8"
+            },
+            "body": "{\"ec\": 0,\"em\":\"添加成功\",\"dto\": {\"returnFlag\":\"0\"}}"
+          }
+        },
+        {
+          "is": {
+            "statusCode": 400,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"ec\": 1,\"em\":\"用户已存在\",\"dto\": {}}"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "equals": {
+            "path": "/customers",
+            "method": "POST",
+            "body": {
+              "id": "321"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "port": 4545,
+  "protocol": "http",
+  "name": "Combind sample",
+  "defaultResponse": {
+    "statusCode": 400,
+    "body": "Bad Request",
+    "headers": {}
+  },
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "content-type": "application/json;charset=UTF-8"
+            },
+            "body": "{\"ec\": 0,\"em\":\"添加成功\",\"dto\": {\"returnFlag\":\"0\"}}"
+          }
+        },
+        {
+          "is": {
+            "statusCode": 400,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"ec\": 1,\"em\":\"用户已存在\",\"dto\": {}}"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "equals": {
+            "path": "/customers",
+            "method": "POST",
+            "body": {
+              "id": "321"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "content-type": "application/json;charset=UTF-8"
+            },
+            "body": "{\"id\": 123,\"name\":\"王一\",\"dob\": \"1998-08-08\"}"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "equals": {
+            "path": "/customers/123",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "content-type": "application/json;charset=UTF-8"
+            },
+            "body": "{\"ec\": 1,\"em\":\"操作失败\",\"dto\": {}}"
+          }
+        }
+      ]
+    }
+  ]
+}

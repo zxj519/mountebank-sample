@@ -1,0 +1,31 @@
+{
+    "name": "Wait sample",
+    "port": 4545,
+    "protocol": "http",
+    "stubs": [
+        {
+            "predicates": [
+                {
+                    "equals": {
+                        "method": "GET",
+                        "path": "/customers/123"
+                    }
+                }
+            ],
+            "responses": [
+                {
+                    "_behaviors": {
+                        "wait": 5000
+                    },
+                    "is": {
+                        "body": "{\"id\": 123,\"name\":\"王一\",\"dob\": \"1998-08-08\"}",
+                        "headers": {
+                            "content-type": "application/json;charset=UTF-8"
+                        },
+                        "statusCode": 200
+                    }
+                }
+            ]
+        }
+    ]
+}
