@@ -4,7 +4,7 @@
         "headers": {},
         "statusCode": 400
     },
-    "name": "Matches sample",
+    "name": "Copy sample",
     "port": 4545,
     "protocol": "http",
     "stubs": [
@@ -17,22 +17,26 @@
                                 "method": "POST",
                                 "path": "/customers"
                             }
-                        },
-                        {
-                            "jsonpath": {
-                                "selector": "$.id"
-                            },
-                            "matches": {
-                                "body": "^\\d{3}$"
-                            }
                         }
                     ]
                 }
             ],
             "responses": [
                 {
+                    "_behaviors": {
+                        "copy": [
+                            {
+                                "from": "body",
+                                "into": "${id}",
+                                "using": {
+                                    "method": "jsonpath",
+                                    "selector": "$.id"
+                                }
+                            }
+                        ]
+                    },
                     "is": {
-                        "body": "{\"ec\": 0,\"em\":\"添加成功\",\"dto\": {\"returnFlag\":\"0\"}}",
+                        "body": "{\"ec\": 0,\"em\":\"添加成功\",\"dto\": {\"returnFlag\":\"0\", \"id\":\"${id}\"}}",
                         "headers": {
                             "content-type": "application/json;charset=UTF-8"
                         },

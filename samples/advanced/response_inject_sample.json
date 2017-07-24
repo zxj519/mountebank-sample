@@ -1,0 +1,14 @@
+{
+  "port": 4545,
+  "protocol": "http",
+  "name": "Inject sample",
+  "stubs": [
+    {
+      "responses": [
+        {
+        	"inject": "function (request, state, logger) {var requestMessage = request.query.message; var responseStr = 'Hello! ' + requestMessage; return {statusCode: 200, headers: {'Content-Type': 'application/xml'}, body: responseStr}; }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-    "name": "decorate sample",
+    "name": "Wait sample",
     "port": 4545,
     "protocol": "http",
     "stubs": [
@@ -13,11 +13,12 @@
                 }
             ],
             "responses": [
-                {"_behaviors": {
-            "decorate": "function (request, response) { var pad = function (number) { return (number < 10) ? '0' + number : number.toString(); }, now = new Date(), time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds()); response.body = response.body.replace('${TIME}', time); }"
-          },
+                {
+                    "_behaviors": {
+                        "wait": 5000
+                    },
                     "is": {
-                        "body": "{\"id\": 123,\"name\":\"王一\",\"dob\": \"1998-08-08\", \"lastUpdateTime\":\"${TIME}\"}",
+                        "body": "{\"id\": 123,\"name\":\"王一\",\"dob\": \"1998-08-08\"}",
                         "headers": {
                             "content-type": "application/json;charset=UTF-8"
                         },

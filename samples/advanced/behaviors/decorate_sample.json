@@ -13,9 +13,10 @@
                 }
             ],
             "responses": [
-                {"_behaviors": {
-            "decorate": "function (request, response) { var pad = function (number) { return (number < 10) ? '0' + number : number.toString(); }, now = new Date(), time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds()); response.body = response.body.replace('${TIME}', time); }"
-          },
+                {
+                    "_behaviors": {
+                        "decorate": "function (request, response) { var pad = function (number) { return (number < 10) ? '0' + number : number.toString(); }, now = new Date(), time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds()); response.body = response.body.replace('${TIME}', time); }"
+                    },
                     "is": {
                         "body": "{\"id\": 123,\"name\":\"王一\",\"dob\": \"1998-08-08\", \"lastUpdateTime\":\"${TIME}\"}",
                         "headers": {
